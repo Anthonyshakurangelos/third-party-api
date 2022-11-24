@@ -1,5 +1,5 @@
 var hour9 = document.querySelector("#hour-9");
-var hour10 = document.querySelector("#hour10");
+var hour10 = document.querySelector("#hour-10");
 var hour11 = document.querySelector("#hour-11");
 var hour12 = document.querySelector("#hour-12");
 var hour1 = document.querySelector("#hour-1");
@@ -7,14 +7,26 @@ var hour2 = document.querySelector("#hour-2");
 var hour3 = document.querySelector("#hour-3");
 var hour4 = document.querySelector("#hour-4");
 var hour5 = document.querySelector("#hour-5");
-var saveBtn = document.querySelectorAll(".");
+var saveButton = document.querySelectorAll(".saveBtn");
+var userInput  = (".description");
 // var timePast = document.querySelectorAll(".")
 // var timePresent = document.querySelectorAll(".")
 // var timeFuture = document.querySelectorAll(".")
 
-var time = dayjs().format("")
+
 
 $(function () {
+  var hour = dayjs().hour()
+
+  var time = dayjs().format("dddd, M-D-YYYY");
+  $("#currentDay").text(time);
+  $('.time-block').each(function () { 
+  var hourNum = parseInt($(this).attr("id").split("-")[1])
+   console.log(hourNum);
+    
+  })
+  //add and remove a for loop for each hour
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -34,6 +46,19 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+ $(".saveBtn").on("click", function () {
+  userInput = $(this).siblings(".description").val();
+  hourNum = $(this).parents().attr("id");
+  localStorage.setItem(hourNum, userInput);
+ });
+
+// $("button").click(function() {
+// localStorage.setItem("userInput", userInput)
+
+
+// });
+
+
 
 // GIVEN I am using a daily planner to create a schedule
 // WHEN I open the planner
