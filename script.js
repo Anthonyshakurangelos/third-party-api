@@ -2,11 +2,11 @@ var hour9 = $("#hour-9");
 var hour10 = $("#hour-10");
 var hour11 = $("#hour-11");
 var hour12 = $("#hour-12");
-var hour1 = $("#hour-1");
-var hour2 = $("#hour-2");
-var hour3 = $("#hour-3");
-var hour4 = $("#hour-4");
-var hour5 = $("#hour-5");
+var hour1 = $("#hour-13");
+var hour2 = $("#hour-14");
+var hour3 = $("#hour-15");
+var hour4 = $("#hour-16");
+var hour5 = $("#hour-17");
 var saveButton = document.querySelectorAll(".saveBtn");
 var userInput = ".description";
 var pastClassEl = $(".present");
@@ -25,17 +25,17 @@ $(function () {
   $(".time-block").each(function () {
     // var hourNum = parseInt($(this).attr("id").split("-")[1]);
     var hourNum = parseInt($(this).attr("id").split("-")[1]);
-    
+    console.log(hourNum)
     // for (var i = 0; hourNum.length; i++) {
     //  console.log(hour, hourNum)
     if (hour == hourNum) {
-      $(`#${hourNum}`).addClass(".present");
+      $(`#hour-${hourNum}`).addClass("present");
     }
     if (hour > hourNum) {
-      $(`#${hourNum}`).addClass(".past");
+      $(`#hour-${hourNum}`).addClass("past");
     }
     if (hour < hourNum) {
-      $(`#${hourNum}`).addClass(".future");
+      $(`#hour-${hourNum}`).addClass("future");
     }
     // }
     
@@ -61,4 +61,14 @@ $(function () {
     hourNum = $(this).parents().attr("id");
     localStorage.setItem(hourNum, userInput);
   });
+  $("#hour-9").children(".description").val(localStorage.getItem('hour-9'));
+  $("#hour-10").children(".description").val(localStorage.getItem('hour-10'));
+  $("#hour-11").children(".description").val(localStorage.getItem('hour-11'));
+  $("#hour-12").children(".description").val(localStorage.getItem('hour-12'));
+  $("#hour-13").children(".description").val(localStorage.getItem('hour-13'));
+  $("#hour-14").children(".description").val(localStorage.getItem('hour-14'));
+  $("#hour-15").children(".description").val(localStorage.getItem('hour-15'));
+  $("#hour-16").children(".description").val(localStorage.getItem('hour-16'));
+  $("#hour-17").children(".description").val(localStorage.getItem('hour-17'));
+
 });
